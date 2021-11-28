@@ -109,7 +109,7 @@ extension HabitCollectionViewCell {
     
     // MARK: - General Helpers
     
-    func dataBind(model: Habit) {
+    func dataBind(model: QuestModel) {
         habitNameLabel.setupLabel(
             text: model.title,
             color: .black,
@@ -117,33 +117,26 @@ extension HabitCollectionViewCell {
         )
         
         strikeCountLabel.setupLabel(
-            text: "\(model.strikes)",
+            text: "\(model.accomplishCount)",
             color: .brownishGrey,
             font: .SFTextMedium(fontSize: 12.adjusted)
         )
         
-        let isPublicString: String = {
-            model.isPublic ? "공개" : "비공개"
-        }()
+        let isPublicString: String = "공개"
         termLabel.setupLabel(
-            text: "\(model.term.rawValue) · \(isPublicString)",
+            text: "\(model.term.stringValue) · \(isPublicString)",
             color: .lightishBlue,
             font: .SFTextMedium(fontSize: 12.adjusted)
         )
         
-        if model.companies == 0 {
-            peopleCountLabel.setupLabel(
-                text: "혼자",
-                color: .brownGrey,
-                font: .SFTextMedium(fontSize: 12.adjusted)
-            )
-        }
-        else {
-            peopleCountLabel.setupLabel(
-                text: "\(model.companies)",
-                color: .brownGrey,
-                font: .SFTextMedium(fontSize: 12.adjusted)
-            )
+        peopleCountLabel.setupLabel(
+            text: "혼자",
+            color: .brownGrey,
+            font: .SFTextMedium(fontSize: 12.adjusted)
+        )
+        
+        if !model.accomplishable {
+            completeLabel.isHidden = true
         }
     }
 }

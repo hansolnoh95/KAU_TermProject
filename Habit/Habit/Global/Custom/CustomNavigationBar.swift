@@ -21,11 +21,11 @@ class CustomNavigationBar : UIView {
     }
     
     let backBtn = UIButton().then {
-        $0.backgroundColor = .black
+        $0.backgroundColor = .clear
     }
     
     let rightButton = UIButton().then {
-        $0.backgroundColor = .black
+        $0.backgroundColor = .clear
     }
     
     let naviTitle = UILabel().then{
@@ -75,6 +75,8 @@ class CustomNavigationBar : UIView {
         
         if let right = rightBtn {
             self.rightButton.setBackgroundImage(UIImage(named: right), for: .normal)
+        } else {
+            self.rightButton.isHidden = true
         }
     }
 }

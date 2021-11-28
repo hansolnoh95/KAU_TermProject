@@ -40,7 +40,7 @@ class HalfAppearView: UIView {
         $0.backgroundColor = .clear
         
         let handlerView: UIView = {
-            $0.backgroundColor = .gray
+            $0.backgroundColor = .clear
             $0.layer.cornerRadius = 4
             return $0
         }(UIView(frame: .zero))
@@ -75,7 +75,7 @@ extension HalfAppearView {
             window.addSubview(blackView)
             window.addSubview(halfView)
             if isMenu {
-                halfView.layer.addSublayer(gradientLayer())
+//                halfView.layer.addSublayer(gradientLayer())
             }
             halfView.addSubview(gestureHandler)
             halfView.snp.remakeConstraints{
@@ -89,7 +89,7 @@ extension HalfAppearView {
             }
             gestureHandler.snp.remakeConstraints{
                 $0.top.centerX.equalToSuperview()
-                $0.height.equalTo(24)
+                $0.height.equalTo(18)
                 $0.width.equalTo(100)
             }
             gestureHandler.addGestureRecognizer(
@@ -207,6 +207,7 @@ extension HalfAppearView {
             $0.top.equalTo(gestureHandler.snp.bottom)
         }
         
+        halfView.backgroundColor = .white
         if UIApplication.shared.windows.first(where: { $0.isKeyWindow }) != nil {
             let transform = CGAffineTransform(translationX: 0, y: 300)
             halfView.transform = transform

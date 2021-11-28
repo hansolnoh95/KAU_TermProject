@@ -18,6 +18,7 @@ final class SocialCollectionViewCell: UICollectionViewCell {
     
     private let socialProfileImageView = UIImageView().then {
         $0.backgroundColor = .lightBlueGrey
+        $0.setRounded(radius: 10.adjusted)
     }
     
     private let socialProfileNameLabel  = UILabel()

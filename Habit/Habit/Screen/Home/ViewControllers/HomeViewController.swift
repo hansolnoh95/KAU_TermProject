@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Moya
+import RxSwift
 import SnapKit
 import Then
 
@@ -32,6 +34,7 @@ final class HomeViewController: BaseViewController {
     
     private let navigationView = CustomNavigationBar().then {
         $0.backgroundColor = .homeBackground
+        $0.backBtn.setBackgroundImage(UIImage(named: "searchIcon"), for: .normal)
         $0.alpha = 0.6
     }
     
@@ -47,16 +50,13 @@ final class HomeViewController: BaseViewController {
     
     // MARK: - Variables
     
-    var habitModel: [Habit] = [
-        Habit(title: "3km 달리기", strikes: 12, term: Strike.THREE, isPublic: false, isQuest: false, companies: 2, deadLine: 0),
-        Habit(title: "금연", strikes: 32, term: .DAILY, isPublic: false, isQuest: false, companies: 6, deadLine: 0),
-        Habit(title: "물 2리터", strikes: 79, term: .DAILY, isPublic: false, isQuest: true, companies: 0, deadLine: 21),
-        Habit(title: "등산하기", strikes: 2, term: Strike.DOUBLEWEEKLY, isPublic: false, isQuest: false, companies: 4, deadLine: 0),
-        Habit(title: "3km 달리기", strikes: 12, term: Strike.THREE, isPublic: false, isQuest: false, companies: 2, deadLine: 0),
-        Habit(title: "금연", strikes: 32, term: Strike.DAILY, isPublic: false, isQuest: false, companies: 6, deadLine: 0),
-        Habit(title: "물 2리터", strikes: 79, term: Strike.DAILY, isPublic: false, isQuest: true, companies: 0, deadLine: 21),
-        Habit(title: "등산하기", strikes: 2, term: Strike.DOUBLEWEEKLY, isPublic: false, isQuest: false, companies: 4, deadLine: 0)
-    ]
+    private let networkService = NetworkService(
+        provider: MoyaProvider<NetworkRouter>(
+            plugins: [NetworkLoggerPlugin(verbose: true)]
+        )
+    )
+    
+    var habitModel: [QuestModel]?
     
     var socialModel: [SimpleSocial] = [
         SimpleSocial(imageName: "", backgroundColor: .softGreen, message: "물마시기를 완료했어요!", name: "이순신"),
@@ -76,6 +76,11 @@ final class HomeViewController: BaseViewController {
         super.viewDidLoad()
         layout()
         register()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchQuest()
     }
     
 }
@@ -103,11 +108,16 @@ extension HomeViewController {
             $0.height.equalTo(108.adjusted)
         }
         
+        var count: CGFloat = 0
+        if let model = habitModel {
+            count = CGFloat(model.count)
+        }
+        
         habitCollectionView.snp.makeConstraints {
             $0.top.equalTo(self.navigationView.snp.bottom)
             $0.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(198.adjusted + (132.adjusted*CGFloat(habitModel.count)))
+            $0.height.equalTo(198.adjusted + (132.adjusted*count))
         }
         
         plusButton.snp.makeConstraints {
@@ -119,6 +129,17 @@ extension HomeViewController {
         plusIcon.snp.makeConstraints {
             $0.center.equalTo(self.plusButton)
             $0.width.height.equalTo(32.adjusted)
+        }
+    }
+    
+    private func relayout() {
+        var count: CGFloat = 0
+        if let model = habitModel {
+            count = CGFloat(model.count)
+        }
+        
+        habitCollectionView.snp.updateConstraints {
+            $0.height.equalTo(198.adjusted + (132.adjusted*count))
         }
     }
     
@@ -140,13 +161,49 @@ extension HomeViewController {
         )
     }
     
+    private func pushToAddHabitSecondViewController(model: QuestModel, habitID: String) {
+        let secondVC = AddHabitSecondViewController()
+        secondVC.rootViewController = self
+        var requestModel = QuestRequestModel.init(model: model)
+        secondVC.habitModel = requestModel
+        secondVC.habitID = habitID
+        secondVC.configTitle(name: model.title, isDetail: true)
+        self.navigationController?.pushViewController(secondVC, animated: true)
+    }
+    
     // MARK: - Action Helpers
     
     @objc
     private func touchUpPlusButton() {
         let addHabitVC = AddHabitMainViewController()
+        addHabitVC.rootViewController = self
         self.navigationController?.pushViewController(addHabitVC, animated: true)
     }
+    
+    // MARK: - Server Helpers
+    
+    func fetchQuest() {
+        networkService.fetchQuest()
+            .subscribe(onNext: { response in
+                if response.statusCode == 200 {
+                    do {
+                        let decoder = JSONDecoder()
+                        let data = try decoder.decode(QuestResponseModel.self, from: response.data)
+                        self.habitModel = data.questResponses
+                        self.relayout()
+                        self.habitCollectionView.reloadData()
+                    }
+                    catch {
+                        print(error)
+                    }
+                }
+            }, onError: { error in
+                print(error)
+            }, onCompleted: {}).disposed(by: disposeBag)
+    }
+    
+    
+    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -155,7 +212,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 343.adjusted, height: 120.adjusted)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 178.adjusted)
     }
@@ -165,14 +222,16 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return habitModel.count
+        return habitModel?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let habitCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: HabitCollectionViewCell.identifier, for: indexPath)
                 as? HabitCollectionViewCell else { return UICollectionViewCell() }
-        habitCell.dataBind(model: habitModel[indexPath.item])
+        if let model = habitModel {
+            habitCell.dataBind(model: model[indexPath.item])
+        }
         return habitCell
     }
     
@@ -192,5 +251,11 @@ extension HomeViewController: UICollectionViewDataSource {
             return UICollectionReusableView()
         }
         return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let model = habitModel {
+            pushToAddHabitSecondViewController(model: model[indexPath.item], habitID: model[indexPath.item].id)
+        }
     }
 }

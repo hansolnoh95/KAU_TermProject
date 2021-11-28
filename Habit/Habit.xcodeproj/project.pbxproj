@@ -73,6 +73,30 @@
 		CC3806EE2702C3F3006AA4AF /* HabitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3806ED2702C3F3006AA4AF /* HabitCollectionViewCell.swift */; };
 		CC3806F12702C40F006AA4AF /* HabitCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3806F02702C40F006AA4AF /* HabitCollectionReusableView.swift */; };
 		CC3806F42702C6DF006AA4AF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CC3806F32702C6DF006AA4AF /* Kingfisher */; };
+		CC999B002753039900A9397E /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999AFF2753039900A9397E /* NetworkLoggerPlugin.swift */; };
+		CC999B02275303D500A9397E /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B01275303D500A9397E /* Environment.swift */; };
+		CC999B052753D6AF00A9397E /* OptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B042753D6AF00A9397E /* OptionCollectionViewCell.swift */; };
+		CC999B072753DAE700A9397E /* NetworkRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B062753DAE700A9397E /* NetworkRequestModel.swift */; };
+		CC999B092753DB2A00A9397E /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B082753DB2A00A9397E /* Term.swift */; };
+		CC999B0B2753DBDC00A9397E /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B0A2753DBDC00A9397E /* Days.swift */; };
+		CC999B0D2753DD0100A9397E /* NetworkResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B0C2753DD0100A9397E /* NetworkResponseModel.swift */; };
+		CC999B0F2753F92D00A9397E /* SelectDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B0E2753F92D00A9397E /* SelectDaysView.swift */; };
+		CC999B122753FAD900A9397E /* DaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B112753FAD900A9397E /* DaysTableViewCell.swift */; };
+		CC999B142754050A00A9397E /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B132754050A00A9397E /* NetworkRouter.swift */; };
+		CC999B162754070900A9397E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B152754070900A9397E /* NetworkService.swift */; };
+		CC999B192754085A00A9397E /* IntiialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B182754085A00A9397E /* IntiialViewController.swift */; };
+		CC999B1C275408AB00A9397E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B1B275408AB00A9397E /* LoginViewController.swift */; };
+		CC999B1E275408B900A9397E /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B1D275408B900A9397E /* SignupViewController.swift */; };
+		CC999B2027540A2B00A9397E /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B1F27540A2B00A9397E /* FormView.swift */; };
+		CC999B2227540A4F00A9397E /* UnderLinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC999B2127540A4F00A9397E /* UnderLinedTextField.swift */; };
+		CC999B252754236300A9397E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CC999B242754236300A9397E /* FirebaseAuth */; };
+		CC999B272754236300A9397E /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = CC999B262754236300A9397E /* FirebaseAuthCombine-Community */; };
+		CC999B292754236300A9397E /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CC999B282754236300A9397E /* FirebaseInAppMessaging-Beta */; };
+		CC999B2B2754236300A9397E /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CC999B2A2754236300A9397E /* FirebaseInAppMessagingSwift-Beta */; };
+		CC999B2D2754236300A9397E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = CC999B2C2754236300A9397E /* FirebaseMessaging */; };
+		CC999B2F2754236300A9397E /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = CC999B2E2754236300A9397E /* FirebaseRemoteConfig */; };
+		CC999B312754239300A9397E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC999B302754239300A9397E /* GoogleService-Info.plist */; };
+		CC999B34275424AF00A9397E /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC999B33275424AF00A9397E /* PushKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +166,25 @@
 		CC3806EA2702BFF4006AA4AF /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		CC3806ED2702C3F3006AA4AF /* HabitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC3806F02702C40F006AA4AF /* HabitCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCollectionReusableView.swift; sourceTree = "<group>"; };
+		CC999AFF2753039900A9397E /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
+		CC999B01275303D500A9397E /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		CC999B042753D6AF00A9397E /* OptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC999B062753DAE700A9397E /* NetworkRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestModel.swift; sourceTree = "<group>"; };
+		CC999B082753DB2A00A9397E /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
+		CC999B0A2753DBDC00A9397E /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
+		CC999B0C2753DD0100A9397E /* NetworkResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponseModel.swift; sourceTree = "<group>"; };
+		CC999B0E2753F92D00A9397E /* SelectDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDaysView.swift; sourceTree = "<group>"; };
+		CC999B112753FAD900A9397E /* DaysTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysTableViewCell.swift; sourceTree = "<group>"; };
+		CC999B132754050A00A9397E /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		CC999B152754070900A9397E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CC999B182754085A00A9397E /* IntiialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntiialViewController.swift; sourceTree = "<group>"; };
+		CC999B1B275408AB00A9397E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CC999B1D275408B900A9397E /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		CC999B1F27540A2B00A9397E /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		CC999B2127540A4F00A9397E /* UnderLinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderLinedTextField.swift; sourceTree = "<group>"; };
+		CC999B302754239300A9397E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CC999B322754249000A9397E /* Habit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Habit.entitlements; sourceTree = "<group>"; };
+		CC999B33275424AF00A9397E /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,10 +192,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC999B2F2754236300A9397E /* FirebaseRemoteConfig in Frameworks */,
 				CC3806F42702C6DF006AA4AF /* Kingfisher in Frameworks */,
+				CC999B252754236300A9397E /* FirebaseAuth in Frameworks */,
+				CC999B2D2754236300A9397E /* FirebaseMessaging in Frameworks */,
 				CC3806E42702BD13006AA4AF /* SnapKit in Frameworks */,
+				CC999B34275424AF00A9397E /* PushKit.framework in Frameworks */,
+				CC999B292754236300A9397E /* FirebaseInAppMessaging-Beta in Frameworks */,
 				CC3806E12702BD04006AA4AF /* SwiftyColor in Frameworks */,
 				CC3806DE2702BCF4006AA4AF /* Then in Frameworks */,
+				CC999B272754236300A9397E /* FirebaseAuthCombine-Community in Frameworks */,
+				CC999B2B2754236300A9397E /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				2EB5756170631303C68187E6 /* Pods_Habit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,6 +213,7 @@
 		2AD20F6FD579073275C007FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CC999B33275424AF00A9397E /* PushKit.framework */,
 				BCE87E63049C19DD6DFC81BA /* Pods_Habit.framework */,
 			);
 			name = Frameworks;
@@ -198,7 +249,8 @@
 		CC38066B2702B705006AA4AF /* Habit */ = {
 			isa = PBXGroup;
 			children = (
-				CC3806832702B75E006AA4AF /* Networks */,
+				CC999B322754249000A9397E /* Habit.entitlements */,
+				CC999AFE2753038D00A9397E /* Networks */,
 				CC3806822702B740006AA4AF /* Screen */,
 				CC3806812702B73A006AA4AF /* Global */,
 				CC3806802702B728006AA4AF /* Supports */,
@@ -215,6 +267,7 @@
 				CC3806D82702B8D4006AA4AF /* Fonts */,
 				CC3806752702B70D006AA4AF /* Assets.xcassets */,
 				CC38067A2702B70D006AA4AF /* Info.plist */,
+				CC999B302754239300A9397E /* GoogleService-Info.plist */,
 				CC38066C2702B705006AA4AF /* AppDelegate.swift */,
 				CC38066E2702B705006AA4AF /* SceneDelegate.swift */,
 			);
@@ -238,17 +291,11 @@
 		CC3806822702B740006AA4AF /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				CC999B172754084000A9397E /* Login */,
 				CC3806D92702BAEF006AA4AF /* Home */,
 				CC3806DA2702BB0A006AA4AF /* HabitTabbarController.swift */,
 			);
 			path = Screen;
-			sourceTree = "<group>";
-		};
-		CC3806832702B75E006AA4AF /* Networks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Networks;
 			sourceTree = "<group>";
 		};
 		CC3806852702B7F2006AA4AF /* General Extension */ = {
@@ -291,6 +338,9 @@
 				CC38069E2702B7F2006AA4AF /* CustomHalfView.swift */,
 				CC3806A02702B7F2006AA4AF /* CustomPopupView.swift */,
 				CC3806A22702B7F2006AA4AF /* CustomTextView.swift */,
+				CC999B0E2753F92D00A9397E /* SelectDaysView.swift */,
+				CC999B1F27540A2B00A9397E /* FormView.swift */,
+				CC999B2127540A4F00A9397E /* UnderLinedTextField.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -311,6 +361,8 @@
 				CC3806A82702B7F2006AA4AF /* UserData.swift */,
 				CC3806A92702B7F2006AA4AF /* DeviceGroup.swift */,
 				CC3806AA2702B7F2006AA4AF /* Direction.swift */,
+				CC999B082753DB2A00A9397E /* Term.swift */,
+				CC999B0A2753DBDC00A9397E /* Days.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -330,6 +382,7 @@
 				CC3806AF2702B7F3006AA4AF /* Identifiable.swift */,
 				CC3806B02702B7F3006AA4AF /* UserDefaultHandler.swift */,
 				CC3806B12702B7F3006AA4AF /* Coordinator.swift */,
+				CC999B01275303D500A9397E /* Environment.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -374,6 +427,7 @@
 		CC3806E82702BFDF006AA4AF /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				CC999B102753FAC900A9397E /* TableViewCells */,
 				CC3806EF2702C3F7006AA4AF /* Reusables */,
 				CC3806EC2702C3DC006AA4AF /* CollectionViewCells */,
 			);
@@ -396,6 +450,7 @@
 				CC2F69C9270880AD009E4F1C /* SocialCollectionViewCell.swift */,
 				CC15B4B62727C6DC009EA74B /* HabitSuggestionCollectionViewCell.swift */,
 				CC15B4B82727C6EB009EA74B /* JoinExistingHabitCollectionViewCell.swift */,
+				CC999B042753D6AF00A9397E /* OptionCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -406,6 +461,36 @@
 				CC3806F02702C40F006AA4AF /* HabitCollectionReusableView.swift */,
 			);
 			path = Reusables;
+			sourceTree = "<group>";
+		};
+		CC999AFE2753038D00A9397E /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				CC999AFF2753039900A9397E /* NetworkLoggerPlugin.swift */,
+				CC999B062753DAE700A9397E /* NetworkRequestModel.swift */,
+				CC999B0C2753DD0100A9397E /* NetworkResponseModel.swift */,
+				CC999B132754050A00A9397E /* NetworkRouter.swift */,
+				CC999B152754070900A9397E /* NetworkService.swift */,
+			);
+			path = Networks;
+			sourceTree = "<group>";
+		};
+		CC999B102753FAC900A9397E /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				CC999B112753FAD900A9397E /* DaysTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		CC999B172754084000A9397E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CC999B182754085A00A9397E /* IntiialViewController.swift */,
+				CC999B1D275408B900A9397E /* SignupViewController.swift */,
+				CC999B1B275408AB00A9397E /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,6 +516,12 @@
 				CC3806E02702BD04006AA4AF /* SwiftyColor */,
 				CC3806E32702BD13006AA4AF /* SnapKit */,
 				CC3806F32702C6DF006AA4AF /* Kingfisher */,
+				CC999B242754236300A9397E /* FirebaseAuth */,
+				CC999B262754236300A9397E /* FirebaseAuthCombine-Community */,
+				CC999B282754236300A9397E /* FirebaseInAppMessaging-Beta */,
+				CC999B2A2754236300A9397E /* FirebaseInAppMessagingSwift-Beta */,
+				CC999B2C2754236300A9397E /* FirebaseMessaging */,
+				CC999B2E2754236300A9397E /* FirebaseRemoteConfig */,
 			);
 			productName = Habit;
 			productReference = CC3806692702B704006AA4AF /* Habit.app */;
@@ -465,6 +556,7 @@
 				CC3806DF2702BD04006AA4AF /* XCRemoteSwiftPackageReference "SwiftyColor" */,
 				CC3806E22702BD13006AA4AF /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CC3806F22702C6DF006AA4AF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				CC999B232754236300A9397E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = CC38066A2702B704006AA4AF /* Products */;
 			projectDirPath = "";
@@ -493,6 +585,7 @@
 				CC3806742702B705006AA4AF /* Main.storyboard in Resources */,
 				CC15B4B02727B3E3009EA74B /* SF-Pro-Display-Light.otf in Resources */,
 				CC15B4AD2727B3E3009EA74B /* SF-Pro-Text-Bold.otf in Resources */,
+				CC999B312754239300A9397E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +641,8 @@
 				CC3806C82702B7F3006AA4AF /* CustomHalfView.swift in Sources */,
 				CC3806C32702B7F3006AA4AF /* CarouselCollectionViewFlowLayout.swift in Sources */,
 				CC3806DB2702BB0A006AA4AF /* HabitTabbarController.swift in Sources */,
+				CC999B192754085A00A9397E /* IntiialViewController.swift in Sources */,
+				CC999B0F2753F92D00A9397E /* SelectDaysView.swift in Sources */,
 				CC15B4B72727C6DC009EA74B /* HabitSuggestionCollectionViewCell.swift in Sources */,
 				CC15B4B52727C03A009EA74B /* AddHabitMainViewController.swift in Sources */,
 				CC3806CA2702B7F3006AA4AF /* CustomPopupView.swift in Sources */,
@@ -561,10 +656,16 @@
 				CC3806BD2702B7F3006AA4AF /* UIButton+.swift in Sources */,
 				CC15B4B92727C6EB009EA74B /* JoinExistingHabitCollectionViewCell.swift in Sources */,
 				CC3806D32702B7F3006AA4AF /* BaseViewController.swift in Sources */,
+				CC999B072753DAE700A9397E /* NetworkRequestModel.swift in Sources */,
 				CC2F69CA270880AD009E4F1C /* SocialCollectionViewCell.swift in Sources */,
 				CC3806B72702B7F3006AA4AF /* UIFont+.swift in Sources */,
+				CC999B092753DB2A00A9397E /* Term.swift in Sources */,
 				CC3806BF2702B7F3006AA4AF /* UITextField+.swift in Sources */,
+				CC999B02275303D500A9397E /* Environment.swift in Sources */,
+				CC999B1C275408AB00A9397E /* LoginViewController.swift in Sources */,
+				CC999B0D2753DD0100A9397E /* NetworkResponseModel.swift in Sources */,
 				CC3806B42702B7F3006AA4AF /* CALayer+.swift in Sources */,
+				CC999B122753FAD900A9397E /* DaysTableViewCell.swift in Sources */,
 				CC3806712702B705006AA4AF /* ViewController.swift in Sources */,
 				CC3806B82702B7F3006AA4AF /* UIView+.swift in Sources */,
 				CC3806E62702BD2E006AA4AF /* HomeViewController.swift in Sources */,
@@ -576,7 +677,11 @@
 				CC3806D72702B7F3006AA4AF /* Coordinator.swift in Sources */,
 				CC3806CD2702B7F3006AA4AF /* TextAttribute.swift in Sources */,
 				CC3806C72702B7F3006AA4AF /* CustomNavigationBar.swift in Sources */,
+				CC999B2227540A4F00A9397E /* UnderLinedTextField.swift in Sources */,
+				CC999B052753D6AF00A9397E /* OptionCollectionViewCell.swift in Sources */,
 				CC3806B62702B7F3006AA4AF /* CGFloat+.swift in Sources */,
+				CC999B162754070900A9397E /* NetworkService.swift in Sources */,
+				CC999B1E275408B900A9397E /* SignupViewController.swift in Sources */,
 				CC3806EE2702C3F3006AA4AF /* HabitCollectionViewCell.swift in Sources */,
 				CC38066F2702B705006AA4AF /* SceneDelegate.swift in Sources */,
 				CC3806C12702B7F3006AA4AF /* UIColor+.swift in Sources */,
@@ -584,8 +689,12 @@
 				CC3806B52702B7F3006AA4AF /* Int+.swift in Sources */,
 				CC3806EB2702BFF4006AA4AF /* Habit.swift in Sources */,
 				CC3806C62702B7F3006AA4AF /* CustomTextField.swift in Sources */,
+				CC999B0B2753DBDC00A9397E /* Days.swift in Sources */,
+				CC999B2027540A2B00A9397E /* FormView.swift in Sources */,
+				CC999B142754050A00A9397E /* NetworkRouter.swift in Sources */,
 				CC3806D42702B7F3006AA4AF /* ViewModel.swift in Sources */,
 				CC3806CC2702B7F3006AA4AF /* CustomTextView.swift in Sources */,
+				CC999B002753039900A9397E /* NetworkLoggerPlugin.swift in Sources */,
 				CC15B4B32727B8A8009EA74B /* SimpleSocial.swift in Sources */,
 				CC3806BE2702B7F3006AA4AF /* Double+.swift in Sources */,
 				CC3806D02702B7F3006AA4AF /* UserData.swift in Sources */,
@@ -740,9 +849,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "http://3.38.166.143:8080/api/";
+				CODE_SIGN_ENTITLEMENTS = Habit/Habit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QS42RPKQCD;
+				DEVELOPMENT_TEAM = VTJLBZ2Q3F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Habit/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -770,9 +881,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "http://3.38.166.143:8080/api/";
+				CODE_SIGN_ENTITLEMENTS = Habit/Habit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QS42RPKQCD;
+				DEVELOPMENT_TEAM = VTJLBZ2Q3F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Habit/Supports/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -850,6 +963,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		CC999B232754236300A9397E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -872,6 +993,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CC3806F22702C6DF006AA4AF /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		CC999B242754236300A9397E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC999B232754236300A9397E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CC999B262754236300A9397E /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC999B232754236300A9397E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		CC999B282754236300A9397E /* FirebaseInAppMessaging-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC999B232754236300A9397E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessaging-Beta";
+		};
+		CC999B2A2754236300A9397E /* FirebaseInAppMessagingSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC999B232754236300A9397E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseInAppMessagingSwift-Beta";
+		};
+		CC999B2C2754236300A9397E /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC999B232754236300A9397E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		CC999B2E2754236300A9397E /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC999B232754236300A9397E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

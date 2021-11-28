@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             rootNavigation.navigationBar.backgroundColor = .clear
             rootNavigation.hidesBottomBarWhenPushed = false
             
-            let rootVC = HomeViewController()
+            let rootVC = InitialViewController()
             rootNavigation.addChild(rootVC)
             
             window.rootViewController = rootNavigation

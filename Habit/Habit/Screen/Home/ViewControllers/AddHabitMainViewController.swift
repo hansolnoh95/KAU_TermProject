@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Moya
+import RxSwift
 import SnapKit
 import Then
 
@@ -60,6 +62,7 @@ final class AddHabitMainViewController: BaseViewController {
     private let containerView = UIScrollView()
     private let navigationView = CustomNavigationBar().then {
         $0.backgroundColor = .homeBackground
+        $0.backBtn.setBackgroundImage(UIImage(named: "btnBack"), for: .normal)
     }
     
     private let titleLabel = UILabel().then {
@@ -82,6 +85,16 @@ final class AddHabitMainViewController: BaseViewController {
         $0.autocapitalizationType = .none
     }
     
+    private let confirmButton = UIButton().then {
+        $0.setupButton(
+            title: "등록",
+            color: .white,
+            font: .SFTextSemibold(fontSize: 13.adjusted),
+            backgroundColor: .lightishBlue,
+            state: .normal,
+            radius: 8.adjusted
+        )
+    }
     private let applyByIDButton = UIButton().then {
         $0.setupButton(
             title: "습관 ID로 등록하기",
@@ -144,7 +157,7 @@ final class AddHabitMainViewController: BaseViewController {
         $0.setRounded(radius: 8.adjusted)
         $0.font = .SFTextRegular(fontSize: 13.adjusted)
         $0.textColor = .black
-        $0.keyboardType = .numberPad
+        $0.keyboardType = .default
     }
     
     private let halfViewButton = UIButton().then {
@@ -160,17 +173,25 @@ final class AddHabitMainViewController: BaseViewController {
     
     // MARK: - Variables
     
-    var halfViewOriginFrame: CGRect?
+    private let networkService = NetworkService(
+        provider: MoyaProvider<NetworkRouter>(
+            plugins: [NetworkLoggerPlugin(verbose: true)]
+        )
+    )
     
-    var habitModel: [Habit] = [
-        Habit(title: "3km 달리기", strikes: 12, term: Strike.THREE, isPublic: false, isQuest: false, companies: 2, deadLine: 0),
-        Habit(title: "금연", strikes: 32, term: .DAILY, isPublic: false, isQuest: false, companies: 6, deadLine: 0),
-        Habit(title: "물 2리터", strikes: 79, term: .DAILY, isPublic: false, isQuest: true, companies: 0, deadLine: 21),
-        Habit(title: "등산하기", strikes: 2, term: Strike.DOUBLEWEEKLY, isPublic: false, isQuest: false, companies: 4, deadLine: 0),
-        Habit(title: "3km 달리기", strikes: 12, term: Strike.THREE, isPublic: false, isQuest: false, companies: 2, deadLine: 0),
-        Habit(title: "금연", strikes: 32, term: Strike.DAILY, isPublic: false, isQuest: false, companies: 6, deadLine: 0),
-        Habit(title: "물 2리터", strikes: 79, term: Strike.DAILY, isPublic: false, isQuest: true, companies: 0, deadLine: 21),
-        Habit(title: "등산하기", strikes: 2, term: Strike.DOUBLEWEEKLY, isPublic: false, isQuest: false, companies: 4, deadLine: 0)
+    var habitModelWithID: QuestRequestModel?
+    var halfViewOriginFrame: CGRect?
+    var rootViewController: UIViewController?
+    
+    var habitModel: [QuestModel] = [
+        QuestModel(id: "", title: "3km달리기", term: .HOURLY, cycle: 12, startTime: "09:00", endTime: "12:00", days: [.MONDAY, .WEDNESDAY], deadline: 50, totalAlarmCount: 12, accomplishCount: 31, accomplishable: false),
+        QuestModel(id: "", title: "금연", term: .HOURLY, cycle: 12, startTime: "09:00", endTime: "12:00", days: [.MONDAY, .WEDNESDAY], deadline: 50, totalAlarmCount: 12, accomplishCount: 12, accomplishable: false),
+        QuestModel(id: "", title: "물 2리터", term: .HOURLY, cycle: 12, startTime: "09:00", endTime: "12:00", days: [.MONDAY, .WEDNESDAY], deadline: 50, totalAlarmCount: 12, accomplishCount: 32, accomplishable: false),
+        QuestModel(id: "", title: "등산하기", term: .HOURLY, cycle: 12, startTime: "09:00", endTime: "12:00", days: [.MONDAY, .WEDNESDAY], deadline: 50, totalAlarmCount: 12, accomplishCount: 28, accomplishable: false),
+        QuestModel(id: "", title: "스트레칭하기", term: .HOURLY, cycle: 12, startTime: "09:00", endTime: "12:00", days: [.MONDAY, .WEDNESDAY], deadline: 50, totalAlarmCount: 12, accomplishCount: 51, accomplishable: false),
+        QuestModel(id: "", title: "스쿼트하기", term: .HOURLY, cycle: 12, startTime: "09:00", endTime: "12:00", days: [.MONDAY, .WEDNESDAY], deadline: 50, totalAlarmCount: 12, accomplishCount: 42, accomplishable: false),
+        QuestModel(id: "", title: "노래듣기", term: .HOURLY, cycle: 1, startTime: "09:00", endTime: "12:00", days: [.MONDAY, .WEDNESDAY], deadline: 50, totalAlarmCount: 12, accomplishCount: 13, accomplishable: false),
+        QuestModel(id: "", title: "알림 확인하기", term: .HOURLY, cycle: 12, startTime: "09:00", endTime: "12:00", days: [.MONDAY, .WEDNESDAY], deadline: 50, totalAlarmCount: 12, accomplishCount: 15, accomplishable: false)
     ]
     
     var socialModel: [SimpleSocial] = [
@@ -382,8 +403,27 @@ extension AddHabitMainViewController {
         habitIDTextField.attributedPlaceholder = placeholder
     }
     
-    private func pushToAddHabitSecondViewController() {
+    private func pushToAddHabitSecondViewController(name: String) {
         let secondVC = AddHabitSecondViewController()
+        secondVC.configTitle(name: name, isDetail: false)
+        secondVC.rootViewController = rootViewController
+        self.navigationController?.pushViewController(secondVC, animated: true)
+    }
+    
+    private func pushToAddHabitSecondViewController(name: String, model: QuestModel) {
+        let secondVC = AddHabitSecondViewController()
+        secondVC.configTitle(name: name, isDetail: false)
+        secondVC.rootViewController = rootViewController
+        var requestModel = QuestRequestModel.init(model: model)
+        secondVC.habitModel = requestModel
+        self.navigationController?.pushViewController(secondVC, animated: true)
+    }
+    
+    private func pushToSecondWithID(model: QuestRequestModel) {
+        let secondVC = AddHabitSecondViewController()
+        secondVC.configTitle(name: model.title, isDetail: false)
+        secondVC.rootViewController = rootViewController
+        secondVC.habitModel = model
         self.navigationController?.pushViewController(secondVC, animated: true)
     }
     
@@ -399,7 +439,30 @@ extension AddHabitMainViewController {
     @objc
     private func touchUpHalfViewButton() {
         halfContainerView.dissmissFromSuperview()
-        pushToAddHabitSecondViewController()
+        if let model = habitModelWithID {
+            pushToSecondWithID(model: model)
+        }
+    }
+    
+    // MARK: - Action Helpers
+    
+    func fetchQuestWithID(questID: String) {
+        networkService.fetchQuestWithID(questID: questID)
+            .subscribe(onNext: { response in
+                if response.statusCode == 200 {
+                    do {
+                        let decoder = JSONDecoder()
+                        let data = try decoder.decode(QuestModel.self, from: response.data)
+                        let requestModel = QuestRequestModel.init(model: data)
+                        self.habitModelWithID = requestModel
+                    }
+                    catch {
+                        print(error)
+                    }
+                }
+            }, onError: { error in
+                print(error)
+            }, onCompleted: {}).disposed(by: disposeBag)
     }
 }
 
@@ -425,7 +488,7 @@ extension AddHabitMainViewController: UICollectionViewDelegateFlowLayout {
         case firstSuggestionCollectionView:
             return UIEdgeInsets(top: 4.adjusted, left: 40.adjusted, bottom: 4.adjusted, right: 40.adjusted)
         case secondSuggestionCollectionView:
-            return UIEdgeInsets(top: 4.adjusted, left: 0.adjusted, bottom: 4.adjusted, right: 40.adjusted)
+            return UIEdgeInsets(top: 4.adjusted, left: 10.adjusted, bottom: 4.adjusted, right: 40.adjusted)
         case joinExistingHabitCollectionView:
             return UIEdgeInsets(top: 0.adjusted, left: 15.adjusted, bottom: 0.adjusted, right: 15.adjusted)
         default:
@@ -479,10 +542,20 @@ extension AddHabitMainViewController: UICollectionViewDataSource {
                 withReuseIdentifier: JoinExistingHabitCollectionViewCell.identifier, for: indexPath)
                     as? JoinExistingHabitCollectionViewCell else { return UICollectionViewCell() }
             
+            habitCell.dataBind(model: habitModel[indexPath.item])
             return habitCell
             
         default:
             return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == joinExistingHabitCollectionView {
+            pushToAddHabitSecondViewController(
+                name: habitModel[indexPath.item].title,
+                model: habitModel[indexPath.item]
+            )
         }
     }
 }
@@ -493,7 +566,9 @@ extension AddHabitMainViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == habitNameTextField {
-            pushToAddHabitSecondViewController()
+            if let text = textField.text {
+                pushToAddHabitSecondViewController(name: text)
+            }
             return true
         }
         return true
